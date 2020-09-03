@@ -27,18 +27,10 @@ typedef unordered_map<ll, ll> ump;
 int32_t main()
 {
 
-    //#ifndef ONLINE_JUDGE
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt", "w", stdout);
-    //#endif
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 
-    //int t;
-    //cin>>t;
-    //while (t--)
-    //{
     int a, b, c;
     cin >> a >> b >> c;
 
@@ -50,6 +42,6 @@ int32_t main()
     int u = a * b * c;
 
     cout << max(max3(p, q, r), max3(s, t, u));
-    // }
+
     return 0;
 }
