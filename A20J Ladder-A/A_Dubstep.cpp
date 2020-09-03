@@ -39,58 +39,40 @@ int32_t main()
     //cin>>t;
     //while (t--)
     //{
-    int n;
-    cin >> n;
-    int arr[n];
-    for (int i = 0; i < n; i++)
+    string s;
+    cin >> s;
+    s += "WUB";
+    string res;
+    int n = s.length();
+    bool flag = 0;
+    vector<string> v;
+    string temp;
+    for (int i = 0; i < n;)
     {
-        cin >> arr[i];
-    }
-    int cnt = 0;
-    if (n == 2)
-    {
-        if (arr[0] >= arr[1])
+        if (s[i] == 'W' && s[i + 1] == 'U' && s[i + 2] == 'B' && i + 2 < n)
         {
-            cout << 0;
+            if (temp.length())
+            {
+                v.pb(temp);
+            }
+
+            temp = "";
+            i += 3;
         }
         else
         {
-            cout << 1;
+            temp += s[i];
+            i++;
         }
     }
-    else
+    for (int i = 0; i < v.size(); i++)
     {
-        int mnIdx = 0, mxIdx = 0;
-        int minE = arr[0], maxE = arr[0];
-        for (int i = 0; i < n; i++)
+        cout << v[i];
+        if (i != v.size() - 1)
         {
-            if (arr[i] <= minE)
-            {
-                mnIdx = i;
-                minE = arr[i];
-            }
+            cout << " ";
         }
-        for (int i = mnIdx; i < n - 1; i++)
-        {
-            swap(arr[i], arr[i + 1]);
-            cnt++;
-        }
-        for (int i = 0; i < n; i++)
-        {
-            if (arr[i] > maxE)
-            {
-                mxIdx = i;
-                maxE = arr[i];
-            }
-        }
-        for (int i = mxIdx; i > 0; i--)
-        {
-            swap(arr[i - 1], arr[i]);
-            cnt++;
-        }
-        cout << cnt;
     }
-
     // }
     return 0;
 }

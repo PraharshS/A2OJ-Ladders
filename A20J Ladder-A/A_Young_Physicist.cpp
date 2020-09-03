@@ -41,54 +41,23 @@ int32_t main()
     //{
     int n;
     cin >> n;
-    int arr[n];
-    for (int i = 0; i < n; i++)
+
+    int sum1 = 0, sum2 = 0, sum3 = 0;
+    while (n--)
     {
-        cin >> arr[i];
+        int n1, n2, n3;
+        cin >> n1 >> n2 >> n3;
+        sum1 += n1;
+        sum2 += n2;
+        sum3 += n3;
     }
-    int cnt = 0;
-    if (n == 2)
+    if (sum1 || sum2 || sum3)
     {
-        if (arr[0] >= arr[1])
-        {
-            cout << 0;
-        }
-        else
-        {
-            cout << 1;
-        }
+        cout << "NO";
     }
     else
     {
-        int mnIdx = 0, mxIdx = 0;
-        int minE = arr[0], maxE = arr[0];
-        for (int i = 0; i < n; i++)
-        {
-            if (arr[i] <= minE)
-            {
-                mnIdx = i;
-                minE = arr[i];
-            }
-        }
-        for (int i = mnIdx; i < n - 1; i++)
-        {
-            swap(arr[i], arr[i + 1]);
-            cnt++;
-        }
-        for (int i = 0; i < n; i++)
-        {
-            if (arr[i] > maxE)
-            {
-                mxIdx = i;
-                maxE = arr[i];
-            }
-        }
-        for (int i = mxIdx; i > 0; i--)
-        {
-            swap(arr[i - 1], arr[i]);
-            cnt++;
-        }
-        cout << cnt;
+        cout << "YES";
     }
 
     // }

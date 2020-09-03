@@ -41,56 +41,23 @@ int32_t main()
     //{
     int n;
     cin >> n;
-    int arr[n];
+    int a[n], b[n];
+    ump mp;
     for (int i = 0; i < n; i++)
     {
-        cin >> arr[i];
+        cin >> a[i] >> b[i];
+        mp[a[i]]++;
     }
     int cnt = 0;
-    if (n == 2)
-    {
-        if (arr[0] >= arr[1])
-        {
-            cout << 0;
-        }
-        else
-        {
-            cout << 1;
-        }
-    }
-    else
-    {
-        int mnIdx = 0, mxIdx = 0;
-        int minE = arr[0], maxE = arr[0];
-        for (int i = 0; i < n; i++)
-        {
-            if (arr[i] <= minE)
-            {
-                mnIdx = i;
-                minE = arr[i];
-            }
-        }
-        for (int i = mnIdx; i < n - 1; i++)
-        {
-            swap(arr[i], arr[i + 1]);
-            cnt++;
-        }
-        for (int i = 0; i < n; i++)
-        {
-            if (arr[i] > maxE)
-            {
-                mxIdx = i;
-                maxE = arr[i];
-            }
-        }
-        for (int i = mxIdx; i > 0; i--)
-        {
-            swap(arr[i - 1], arr[i]);
-            cnt++;
-        }
-        cout << cnt;
-    }
 
+    for (int i : b)
+    {
+        if (mp.find(i) != mp.end())
+        {
+            cnt += mp[i];
+        }
+    }
+    cout << cnt;
     // }
     return 0;
 }

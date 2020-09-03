@@ -39,58 +39,20 @@ int32_t main()
     //cin>>t;
     //while (t--)
     //{
-    int n;
-    cin >> n;
+    int k, n;
+    cin >> k >> n;
     int arr[n];
     for (int i = 0; i < n; i++)
     {
         cin >> arr[i];
     }
-    int cnt = 0;
-    if (n == 2)
+    sort(arr, arr + n);
+    int mnm = INT_MAX;
+    for (int i = 0; i + k <= n; i++)
     {
-        if (arr[0] >= arr[1])
-        {
-            cout << 0;
-        }
-        else
-        {
-            cout << 1;
-        }
+        mnm = min(mnm, arr[i + k - 1] - arr[i]);
     }
-    else
-    {
-        int mnIdx = 0, mxIdx = 0;
-        int minE = arr[0], maxE = arr[0];
-        for (int i = 0; i < n; i++)
-        {
-            if (arr[i] <= minE)
-            {
-                mnIdx = i;
-                minE = arr[i];
-            }
-        }
-        for (int i = mnIdx; i < n - 1; i++)
-        {
-            swap(arr[i], arr[i + 1]);
-            cnt++;
-        }
-        for (int i = 0; i < n; i++)
-        {
-            if (arr[i] > maxE)
-            {
-                mxIdx = i;
-                maxE = arr[i];
-            }
-        }
-        for (int i = mxIdx; i > 0; i--)
-        {
-            swap(arr[i - 1], arr[i]);
-            cnt++;
-        }
-        cout << cnt;
-    }
-
+    cout << mnm;
     // }
     return 0;
 }
